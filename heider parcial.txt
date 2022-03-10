@@ -1,0 +1,39 @@
+create table Estudiante (
+      id int primary key,
+	nombre varchar,
+	n_matricula int ,
+      c_matriculado varchar,
+	fecha_nacimiento datetime,
+	telefono bigint 
+);
+
+create table Asignatura (	
+	cog_asignatura int  primary key ,
+	nombre varchar ,
+      cod_profe int 
+	
+);
+
+create table Profesor (	
+      id_p int,
+      nif_p int primary key,
+	nombre varchar,
+	especialidad varchar,	
+	telefono bigint 
+);
+
+
+ALTER TABLE asignatura
+    ADD CONSTRAINT relacion FOREIGN KEY (cod_profe) REFERENCES profesor(nif_p);
+
+ALTER TABLE estudiante 
+    ADD CONSTRAINT relacion2 FOREIGN KEY (id) REFERENCES asignatura(cog_asignatura);
+
+insert into estudiante values (11, 'andres', 1234, '9no', '12/02/2022' , 3012104546);
+insert into estudiante values (12, 'luisa',1234, '9no', '13/02/2022' , 3004504802);
+insert into estudiante values (13, 'daniel',1234, '9no', '14/02/2022' , 3012104847);
+insert into estudiante values (14, 'muricio',1234, '9no', '16/02/2022' , 3046779258);
+
+insert into profesor  values (321,111,'willian','informatico' ,3213584582);
+
+insert into asignatura values (1111,'informatica',111);
